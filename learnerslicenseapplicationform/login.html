@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="style.css">
+        <script>
+            function f1(obj)
+            {
+                obj.style.cursor="pointer";
+            }
+         /*   function vald()
+            {
+                var x=document.getElementById("username").value;
+                var y=/^([a-z]{5,})([0-9]{2,})\@([a-z]{5})\.([a-z]{3})$/;
+                if(x.match(y))
+                {
+                    return true;
+                }
+                else{
+                    alert("NOT VAILD INPUT");
+                    return false;
+                }
+            }*/
+    
+    
+    
+            
+        </script>
+    </head>
+    <body >
+       
+        <div class="formalgin">
+           
+            <h1>LOGIN FORM</h1>
+            <form action='login.php' method='post' >
+                <p>EMAIL:</p>
+                <input type="text" id="email" name="email" placeholder="Enter the email" required>
+                <p>PASSWORD:</p>
+                <input type="password" name="pwd" placeholder="Enter the password" required>
+                
+                <button type="submit" onmouseover="f1(this)">LOGIN</button>
+               
+            </form>
+        </div>
+    </body>
+</html>
+<?php
+    

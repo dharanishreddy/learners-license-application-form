@@ -1,0 +1,220 @@
+<html>
+    <head>
+    </head>
+ <script>
+ function cap()
+ {
+     var s=/^[^0-9]{1,}$/;
+     document.getElementById("name").value=document.getElementById("name").value.toUpperCase();
+     document.getElementById("name").style.background="white";
+     if(!document.getElementById("name").value.match(s))
+     {
+        alert("invalid name");
+        document.getElementById("name").value=" ";
+     }
+ }
+ function clr()
+ {
+     document.getElementById("name").style.background="grey";
+ }
+ function clr2()
+ {
+     document.getElementById("pss").style.background="grey";
+ }
+ function cclr2()
+ {
+     document.getElementById("cpss").style.background="grey";
+ }
+ function wht()
+ {
+     document.getElementById("pss").style.background="white";
+ }
+ function cwht()
+ {
+     var x=document.getElementById("pss").value;
+     var y=document.getElementById("cpss").value;
+     if(!x.match(y))
+     {
+        alert("password not matching");
+        document.getElementById("cpss").value="";
+     }
+    document.getElementById("cpss").style.background="white";
+ }
+ function clr1()
+ {
+     document.getElementById("email").style.background="grey";
+ }
+ function baby()
+ {
+     document.getElementById("email").style.background="white";
+        var p=/^[0-9,a-z,.,_]{1,}\@[a-z]{1,}\.[a-z]{1,}$/;
+     if(!(document.getElementById("email").value.match(p)))
+     {
+         alert("invalid email");
+         document.getElementById("email").value=" ";
+     }
+ }
+// function aadh()
+ //{
+   //  var e=document.getElementById("aadhar").value;
+     //var s=/^[0-9]{12}$/;
+     
+     //if(!e.match(s))
+     //{
+      //  alert("invalid aadhar number");
+       // document.getElementById("aadhar").value=" ";
+     //}
+// }
+ 
+ function showUser(str) {
+    if (str == "") {
+        document.getElementById("id1").innerHTML = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("id1").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","form.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+ </script>
+<body>
+<center style="font-size:20px" style="font-style:BOLD">
+<form action="insert.php" method="GET">
+<h1 style="text-align:center"> LEARNER'S LICENSE REGISTRATION FORM</h1>
+<table  border="0" cellspacing="15">
+    
+<tr>
+<td>
+NAME:
+</td>
+<td>
+<input type="text" name="name" id="name" onblur="cap()" onfocus="clr()" required>
+</td>
+</tr>
+<tr>
+<td>
+PASSWORD:
+</td>
+<td>
+<input type="password" name="pss" id="pss" onblur="cwht()" onfocus="clr()" required>
+</td>
+</tr>
+<tr>
+<td>
+CONFIRM PASSWORD:
+</td>
+<td>
+<input type="password" name="cpss" id="cpss" onblur="cwht()" onfocus="clr()" required>
+</td>
+</tr>
+<tr>
+
+<tr>
+    <td>
+        EMAIL:
+    </td>
+    <td>
+        <input type="text" name="email" id="email" onfocus="clr1()" onblur="baby()" required>
+        <!--<input type="email" placeholder="Enter your email" />-->
+    </td>
+</tr>
+<tr>
+<td>
+GENDER:
+</td>
+<td>
+<input type="radio" value="MALE" name="gender">MALE<br>
+<input type="radio" value="FEMALE" name="gender">FEMALE<br>
+</td>
+</tr>
+<tr>
+<td>
+PHONE NUMBER:
+</td>
+<td>
+<input type="text" name="phno" required>
+</td>
+</tr>
+<tr>
+<td>
+AADHAR NUMBER:
+</td>
+<td>
+    <input type="text" id="aadhar" name="aadhar" onblur="aadh()" required>
+</td>
+</tr>
+<tr>
+<td>
+ADDRESS:
+</td>
+<td>
+<input type="text" name="address" required>
+</td>
+</tr>
+<tr>
+<td>
+LANDMARK(OPTIONAL):
+</td>
+<td>
+<input type="text" name="landmark" >
+</td>
+</tr>
+<tr>
+   <td>
+       DISTRICT:
+   </td>
+   <td>
+ <select id="district" name="district" onchange="showUser(this.value)">
+                    <option value="">select district</option>
+                    <option value="hyderabad">hyderabad</option>
+                    <option value="karimnagar">karimnagar</option>
+                    <option value="khammam">khammam</option>
+                    <option value="medak">medak</option>
+                    <option value="nalgonda">nalgonda</option>
+                </select> </br>
+                <div id="id1">
+                    <select id="testcenter" name="testcenter">
+                    <option>select district first</option>
+                </select>
+                </div>
+</tr>      
+<tr>
+<td>
+TYPE:
+</td>
+<td>
+<input type="checkbox" value="2wheeler" name="wheeler[]">2-wheeler<br>
+<input type="checkbox" value="4wheeler" name="wheeler[]">4-wheeler<br>
+</td>
+</tr>
+<tr>
+<td>
+GEAR SYSTEM:
+</td>
+<td>
+<input type="radio" value="gear" name="gear">gear<br>
+<input type="radio" value="nongear" name="gear">non-gear<br>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center">
+<input type="submit" value="save" >
+</td>
+</tr>
+</table>
+</form>
+ </center>
+</body>
+</html>
+    
